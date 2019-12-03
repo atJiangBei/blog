@@ -1,0 +1,25 @@
+{
+  "name": "blog",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "vuepress dev docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atJiangBei/blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atJiangBei/blog/issues"
+  },
+  "homepage": "https://github.com/atJiangBei/blog#readme",
+  "devDependencies": {
+    "vuepress": "^1.2.0"
+  }
+}

@@ -1,0 +1,6 @@
+node_modules/
+lib/
+coverage/
+docs/.vuepress/dist/
+docs/.vuepress/public/mobile/
+package-lock.json
