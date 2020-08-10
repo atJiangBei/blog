@@ -3,7 +3,7 @@ home: true
 navbar: true
 heroImage: imgs/logo.png
 actionText: 开始 →
-actionLink: guide/
+actionLink: message/
 features:
   - title: javascript
     details: 能用js实现的，最终都会用js实现
@@ -12,7 +12,7 @@ features:
   - title: echarts
     details: 什么也不说了，膜拜大佬就够了
   - title: angular
-    details: 谁有我更新的快
+    details: 前辈
   - title: vue
     details: 给我们的天才作者鼓个掌
   - title: react

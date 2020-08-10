@@ -4,7 +4,7 @@ module.exports = {
 		'/': {
 			lang: 'zh-CN',
 			title: '江北',
-			description: '****************'
+			description: '为中华民族之崛起而努力'
 		},
 		'/en': {
 			lang: 'en-US',
@@ -25,7 +25,7 @@ module.exports = {
 	],
 	serviceWorker: true,
 	themeConfig: {
-		logo: 'imgs/logo.png',
+		//logo: 'imgs/logo.png',
 		activeHeaderLinks: false,
 		editLinks: true,
 		smoothScroll: true,
@@ -34,7 +34,7 @@ module.exports = {
 			indexName: 'vue-router',
 		},
 		repo: 'vuejs/vuepress',
-		repoLabel: '查看源码',
+		//repoLabel: '查看源码',
 		repo: 'atJiangBei/blog',
 		docsBranch: 'master',
 		docsDir: 'docs',
@@ -46,32 +46,51 @@ module.exports = {
 				lastUpdated: '上次更新',
 				nav: [
 					{
-						text: '指南',
-						ariaLabel: 'Language Menu',
-						items: [{
-								text: 'Chinese',
-								link: '/guide/'
-							},
-							{
-								text: 'Japanese',
-								link: '/guide/'
-							}
-						]
+						text: 'js',
+						link: '/js/basic/'
 					},
+					{
+						text: 'es6',
+						link: '/es6/'
+					},
+					{
+						text: 'vue',
+						link: '/vue/'
+					},
+					{
+						text: 'react',
+						link: '/react/'
+					},
+					{
+						text: '算法篇',
+						link: '/leetcode/'
+					},
+					// {
+					// 	text: '指南',
+					// 	ariaLabel: 'Language Menu',
+					// 	items: [{
+					// 			text: 'Chinese',
+					// 			link: '/guide/'
+					// 		}
+					// 	]
+					// },
 					{
 						text: '更新记录',
 						link: 'https://github.com/atjiangbei/blog/releases'
-					}
+					},
+					
 				],
 				sidebar: [
 					'/',
+					'/message.md',
 					{
-						title: '进阶',
+						title: '基础篇',
 						collapsable: false,
 						children: [
-							'/guide/',
+							'/js/basic/',
+							'/js/basic/jicheng.md',
 						]
-					}
+					},
 				]
 			}
 		}
