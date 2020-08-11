@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>节流和防抖 | 江北</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" href="/blog/imgs/logo.png">
+    <link rel="manifest" href="/blog/manifest.json">
+    <link rel="apple-touch-icon" href="/blog/icons/apple-touch-icon-152x152.png">
+    <link rel="mask-icon" href="/blog/icons/safari-pinned-tab.svg" color="#3eaf7c">
+    <meta name="description" content="为中华民族之崛起而努力">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/icons/msapplication-icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    <link rel="preload" href="/blog/assets/css/0.styles.d0858680.css" as="style"><link rel="preload" href="/blog/assets/js/app.9396dc2c.js" as="script"><link rel="preload" href="/blog/assets/js/2.c0191e23.js" as="script"><link rel="preload" href="/blog/assets/js/11.26fd6914.js" as="script"><link rel="preload" href="/blog/assets/js/3.d82c7ee0.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.f10f567a.js"><link rel="prefetch" href="/blog/assets/js/12.b196d8c1.js"><link rel="prefetch" href="/blog/assets/js/13.56d35fa6.js"><link rel="prefetch" href="/blog/assets/js/14.eca49bb3.js"><link rel="prefetch" href="/blog/assets/js/15.81f7d85c.js"><link rel="prefetch" href="/blog/assets/js/16.50913214.js"><link rel="prefetch" href="/blog/assets/js/17.e428fc28.js"><link rel="prefetch" href="/blog/assets/js/18.da2d9701.js"><link rel="prefetch" href="/blog/assets/js/19.d4b73782.js"><link rel="prefetch" href="/blog/assets/js/20.7c576795.js"><link rel="prefetch" href="/blog/assets/js/21.058d6ea5.js"><link rel="prefetch" href="/blog/assets/js/22.b8cbad52.js"><link rel="prefetch" href="/blog/assets/js/23.11180990.js"><link rel="prefetch" href="/blog/assets/js/24.686b772a.js"><link rel="prefetch" href="/blog/assets/js/25.54563e2c.js"><link rel="prefetch" href="/blog/assets/js/26.c7ac19ef.js"><link rel="prefetch" href="/blog/assets/js/27.be0d3edf.js"><link rel="prefetch" href="/blog/assets/js/28.3bb473cc.js"><link rel="prefetch" href="/blog/assets/js/4.a7654779.js"><link rel="prefetch" href="/blog/assets/js/5.23f973fb.js"><link rel="prefetch" href="/blog/assets/js/6.e6157b9a.js"><link rel="prefetch" href="/blog/assets/js/7.bc05f562.js"><link rel="prefetch" href="/blog/assets/js/8.4c2a440c.js"><link rel="prefetch" href="/blog/assets/js/9.ab771339.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.d0858680.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><!----> <span class="site-name">江北</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/js/basic/" class="nav-link">
+  js
+</a></div><div class="nav-item"><a href="/blog/es6/" class="nav-link">
+  es6
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue List" class="dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/vue/vue2/" class="nav-link">
+  vue2.x
+</a></li><li class="dropdown-item"><!----> <a href="/blog/vue/vue3/" class="nav-link">
+  vue3.x
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/react/" class="nav-link">
+  react
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Language Menu" class="dropdown-title"><span class="title">算法篇</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/leetcode/array/" class="nav-link">
+  数组
+</a></li><li class="dropdown-item"><!----> <a href="/blog/leetcode/string/" class="nav-link">
+  字符串
+</a></li><li class="dropdown-item"><!----> <a href="/blog/leetcode/list/" class="nav-link">
+  链表
+</a></li><li class="dropdown-item"><!----> <a href="/blog/leetcode/tree/" class="nav-link">
+  树
+</a></li><li class="dropdown-item"><!----> <a href="/blog/leetcode/other/" class="nav-link">
+  其它
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/atjiangbei/blog/releases" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  更新记录
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/js/advanced/throttledebonce.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/blog/en.html" class="nav-link">
+  en-US
+</a></li></ul></div></div> <a href="https://github.com/atJiangBei/blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/js/basic/" class="nav-link">
+  js
+</a></div><div class="nav-item"><a href="/blog/es6/" class="nav-link">
+  es6
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue List" class="dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/vue/vue2/" class="nav-link">
+  vue2.x
+</a></li><li class="dropdown-item"><!----> <a href="/blog/vue/vue3/" class="nav-link">
+  vue3.x
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/react/" class="nav-link">
+  react
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Language Menu" class="dropdown-title"><span class="title">算法篇</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/leetcode/array/" class="nav-link">
+  数组
+</a></li><li class="dropdown-item"><!----> <a href="/blog/leetcode/string/" class="nav-link">
+  字符串
+</a></li><li class="dropdown-item"><!----> <a href="/blog/leetcode/list/" class="nav-link">
+  链表
+</a></li><li class="dropdown-item"><!----> <a href="/blog/leetcode/tree/" class="nav-link">
+  树
+</a></li><li class="dropdown-item"><!----> <a href="/blog/leetcode/other/" class="nav-link">
+  其它
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/atjiangbei/blog/releases" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  更新记录
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/js/advanced/throttledebonce.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/blog/en.html" class="nav-link">
+  en-US
+</a></li></ul></div></div> <a href="https://github.com/atJiangBei/blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><a href="/blog/" aria-current="page" class="sidebar-link">Home</a></li><li><a href="/blog/message.html" class="sidebar-link">寄语</a></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>基础篇</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/js/basic/" class="sidebar-link">typeof和instanceof</a></li><li><a href="/blog/js/basic/jicheng.html" class="sidebar-link">js的继承</a></li><li><a href="/blog/js/basic/prototypeandproto.html" class="sidebar-link">原型和原型链</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>进阶</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/js/advanced/currying.html" class="sidebar-link">柯里化</a></li><li><a href="/blog/js/advanced/eventloop.html" class="sidebar-link">事件循环</a></li><li><a href="/blog/js/advanced/throttledebonce.html" aria-current="page" class="active sidebar-link">节流和防抖</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/js/advanced/throttledebonce.html#函数节流的思想" class="sidebar-link">函数节流的思想</a></li><li class="sidebar-sub-header"><a href="/blog/js/advanced/throttledebonce.html#函数节流" class="sidebar-link">函数节流</a></li><li class="sidebar-sub-header"><a href="/blog/js/advanced/throttledebonce.html#函数的防抖" class="sidebar-link">函数的防抖</a></li></ul></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>手写篇</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/js/write/array.html" class="sidebar-link">数组</a></li><li><a href="/blog/js/write/object.html" class="sidebar-link">对象</a></li><li><a href="/blog/js/write/function.html" class="sidebar-link">函数</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="节流和防抖"><a href="#节流和防抖" class="header-anchor">#</a> 节流和防抖</h1> <h2 id="函数节流的思想"><a href="#函数节流的思想" class="header-anchor">#</a> 函数节流的思想</h2> <ul><li>**背景：**有些时候我们并不希望在事件持续触发的过程中太过频繁地去执行函数从而损耗大量的性能</li> <li>**典型事件：**onresize,onscroll,oninput,onkeypress,onmosemove</li> <li><strong>防抖</strong>和<strong>节流</strong>是比较好的解决办法</li></ul> <h2 id="函数节流"><a href="#函数节流" class="header-anchor">#</a> 函数节流</h2> <p>**《JavaScript高级程序设计》**在614页是这样介绍节流的，浏览器中某些计算和处理要比其他昂贵的多。连续尝试进行过多的Dom操作可能会导致浏览器挂起，甚至崩溃。为了绕开这个问题，我们可以使用定时器对该函数进行节流
+函数节流背后的基本思想是指，某些代码不可以在没有间断的情况连续重复执行。第一次调用创建一个定时器，在指定的时间间隔之后运行代码。当第二次调用该函数时，它会清除前一次的定时器并设置另一个。如果前一个定时器已经执行过了，这个操作就没有意义。然而，如果前一个定时器尚未执行，其实就是将其替换为一个新的定时器。目的是只有在执行函数的请求停止了一段时间之后才执行。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">throttle</span><span class="token punctuation">(</span><span class="token parameter">method<span class="token punctuation">,</span>context</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token function">clearTimeout</span><span class="token punctuation">(</span>method<span class="token punctuation">.</span>tId<span class="token punctuation">)</span>
+	method<span class="token punctuation">.</span>tId <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token function">method</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>我们的项目里常常会遇到吸顶菜单的需求：在页面滑动超过某个距离时让菜单定位在顶部，小于这个距离时回归原来的位置
+我们通常这样写：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> root <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;root&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">fixedDiv</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+	root<span class="token punctuation">.</span>style<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token string">'fixed'</span><span class="token punctuation">;</span>
+	root<span class="token punctuation">.</span>style<span class="token punctuation">.</span>marginTop <span class="token operator">=</span> <span class="token string">'0'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">staticDiv</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+	root<span class="token punctuation">.</span>style<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token string">'static'</span><span class="token punctuation">;</span>
+	root<span class="token punctuation">.</span>style<span class="token punctuation">.</span>marginTop <span class="token operator">=</span> <span class="token string">'500px'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+window<span class="token punctuation">.</span><span class="token function-variable function">onscroll</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>scrollY<span class="token operator">&gt;</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token function">throttle</span><span class="token punctuation">(</span>fixedDiv<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+		<span class="token function">throttle</span><span class="token punctuation">(</span>staticDiv<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>以上：我们可以看到控制台，输出了很多的1，2，</p> <ul><li>接下来我们用上面提供的<strong>函数节流</strong>方法强化一下代码：</li></ul> <div class="language-javascript extra-class"><pre class="language-javascript"><code>window<span class="token punctuation">.</span><span class="token function-variable function">onscroll</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>scrollY<span class="token operator">&gt;</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token function">throttle</span><span class="token punctuation">(</span>fixedDiv<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+		<span class="token function">throttle</span><span class="token punctuation">(</span>staticDiv<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>以上：throttle()函数接收两个参数，要执行的函数以及在哪个作用域中执行。函数内部首先清除之前设置的定时器，定时器ID是存储在函数的tId属性中。定时器代码使用call()方法来确保方法在适当的环境中执行。</li> <li>问题：当我们一直滑动的时候，即使页面滑动距离超过了500，吸顶菜单也不会吸顶，只有滑动距离超过500并且停顿的时候才会触发我们想要的效果，这似乎并不是我们想要的，上面的节流方法并不是太适用我们这个场景。</li> <li>思考：在这个场景下，我们要的效果应该是滑动的过程里要执行要执行的函数，但不能那么的频繁，我们需要控制这个执行的频率，而不是像上面那样不停的清除定时器又重新计时，在停顿的时候才触发。</li> <li>总结：规定一个单位时间，在这个单位时间内，只能有一次触发事件的回调函数执行，如果在同一个单位时间内某事件被触发多次，只有一次能生效。
+**我们修改一下函数：**我们利用闭包的特性，在我们连续滑动的过程中只有当后一次滑动的时候的时间戳大于上面某一次一定频率的时候触发我们想要触发的函数。</li></ul> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">throttle</span><span class="token punctuation">(</span><span class="token parameter">func</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">let</span> previous <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">s</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">const</span> now <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+			_self <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">,</span>
+			args <span class="token operator">=</span> arguments<span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>now <span class="token operator">-</span> previous <span class="token operator">&gt;</span> s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token function">func</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>_self<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			previous <span class="token operator">=</span> now<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> fixedthrottle <span class="token operator">=</span> <span class="token function">throttle</span><span class="token punctuation">(</span>fixedDiv<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> staticthrottle <span class="token operator">=</span> <span class="token function">throttle</span><span class="token punctuation">(</span>staticDiv<span class="token punctuation">)</span>
+window<span class="token punctuation">.</span><span class="token function-variable function">onscroll</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">const</span> <span class="token constant">Y</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>scrollY<span class="token punctuation">;</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token constant">Y</span><span class="token operator">&gt;</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token function">fixedthrottle</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+		<span class="token function">staticthrottle</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>或者也可以这样实现：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">throttle</span><span class="token punctuation">(</span><span class="token parameter">func</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> timer<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">s</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> args <span class="token operator">=</span> arguments<span class="token punctuation">,</span>
+			_self <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>timer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            timer <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                timer <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+                <span class="token function">func</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>_self<span class="token punctuation">,</span> args<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span> s<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>以上：我们实现了我们想要的</p> <h2 id="函数的防抖"><a href="#函数的防抖" class="header-anchor">#</a> 函数的防抖</h2> <ul><li>**思考：**在某种连续触发的事件里我们并不需要函数连续的触发而造成性能的多度损耗，例如典型的搜索框事件里，假设我们用onkeypress事件监听键盘，在用户输入信息时请求数据，但是我们并不希望用户每按一下键盘就请求一次，而是在用户停顿的时候请求。</li> <li>**概念：**在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时。</li></ul> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">debonce</span><span class="token punctuation">(</span><span class="token parameter">method<span class="token punctuation">,</span>context</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token function">clearTimeout</span><span class="token punctuation">(</span>method<span class="token punctuation">.</span>tId<span class="token punctuation">)</span>
+	method<span class="token punctuation">.</span>tId <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token function">method</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token number">300</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> textbox <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;textbox&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">query</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>textbox<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//此处模拟发送请求</span>
+<span class="token punctuation">}</span>
+textbox<span class="token punctuation">.</span><span class="token function-variable function">oninput</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token function">debonce</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>或者通过闭包：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">debounce</span><span class="token punctuation">(</span><span class="token parameter">func<span class="token punctuation">,</span> wait</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> timeout<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> context <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">,</span>
+			args <span class="token operator">=</span> arguments<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>timeout<span class="token punctuation">)</span> <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timeout<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        timeout <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token function">func</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> wait<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+textbox<span class="token punctuation">.</span>oninput <span class="token operator">=</span> <span class="token function">debonce</span><span class="token punctuation">(</span>query<span class="token punctuation">,</span><span class="token number">300</span><span class="token punctuation">)</span>
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/atJiangBei/blog/edit/master/docs/js/advanced/throttledebonce.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/js/advanced/eventloop.html" class="prev">
+        事件循环
+      </a></span> <span class="next"><a href="/blog/js/write/array.html">
+        数组
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/blog/assets/js/app.9396dc2c.js" defer></script><script src="/blog/assets/js/2.c0191e23.js" defer></script><script src="/blog/assets/js/11.26fd6914.js" defer></script><script src="/blog/assets/js/3.d82c7ee0.js" defer></script>
+  </body>
+</html>
