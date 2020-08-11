@@ -29,10 +29,10 @@ module.exports = {
 		activeHeaderLinks: false,
 		editLinks: true,
 		smoothScroll: true,
-		algolia: {
-			apiKey: 'f854bb46d3de7eeb921a3b9173bd0d4c',
-			indexName: 'vue-router',
-		},
+		// algolia: {
+		// 	apiKey: 'f854bb46d3de7eeb921a3b9173bd0d4c',
+		// 	indexName: 'blog',
+		// },
 		repo: 'vuejs/vuepress',
 		//repoLabel: '查看源码',
 		repo: 'atJiangBei/blog',
@@ -55,7 +55,17 @@ module.exports = {
 					},
 					{
 						text: 'vue',
-						link: '/vue/'
+						ariaLabel: 'Vue List',
+						items:[
+							{
+								text:'vue2.x',
+								link:'/vue/vue2/'
+							},
+							{
+								text:'vue3.x',
+								link:'/vue/vue3/',
+							},
+						]
 					},
 					{
 						text: 'react',
@@ -63,7 +73,30 @@ module.exports = {
 					},
 					{
 						text: '算法篇',
-						link: '/leetcode/'
+						ariaLabel: 'Language Menu',
+						items:[
+							{
+								text:'数组',
+								link:'/leetcode/array/'
+							},
+							{
+								text:'字符串',
+								link:'/leetcode/string/',
+							},
+							{
+								text:'链表',
+								link:'/leetcode/list/'
+							},
+							{
+								text:'树',
+								link:'/leetcode/tree/'
+							},
+							{
+								text:'其它',
+								link:'/leetcode/other/'
+							},
+							
+						]
 					},
 					// {
 					// 	text: '指南',
@@ -89,6 +122,25 @@ module.exports = {
 						children: [
 							'/js/basic/',
 							'/js/basic/jicheng.md',
+							'/js/basic/prototypeandproto.md'
+						]
+					},
+					{
+						title: '进阶',
+						collapsable: false,
+						children: [
+							'/js/advanced/currying.md',
+							'/js/advanced/eventloop.md',
+							'/js/advanced/throttledebonce.md',
+						]
+					},
+					{
+						title: '手写篇',
+						collapsable: false,
+						children: [
+							'/js/write/array.md',
+							'/js/write/object.md',
+							'/js/write/function.md',
 						]
 					},
 				]
