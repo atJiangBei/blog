@@ -50,10 +50,6 @@ module.exports = {
 						link: '/js/basic/'
 					},
 					{
-						text: 'es6',
-						link: '/es6/'
-					},
-					{
 						text: 'vue',
 						ariaLabel: 'Vue List',
 						items:[
@@ -70,6 +66,21 @@ module.exports = {
 					{
 						text: 'react',
 						link: '/react/'
+					},
+					{
+						text: '面试',
+						ariaLabel: 'Js List',
+						items:[
+							{
+								text:'原生js',
+								collapsable: false,
+								link:'/questions/js/'
+							},
+							{
+								text:'vue',
+								link:'/questions/vue/',
+							},
+						]
 					},
 					{
 						text: '算法篇',
@@ -122,7 +133,7 @@ module.exports = {
 						children: [
 							'/js/basic/',
 							'/js/basic/jicheng.md',
-							'/js/basic/prototypeandproto.md'
+							'/js/basic/prototypeandproto.md',
 						]
 					},
 					{

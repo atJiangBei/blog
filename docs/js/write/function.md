@@ -2,6 +2,8 @@
 
 ## call
 
+[MDN文档](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
+
 ```javascript
 
 Function.prototype.myCall = function(){
@@ -20,6 +22,8 @@ console.log(Math.max.myCall(null,1,2,3))
 
 ## apply
 
+[MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
+
 ```javascript
 
 Function.prototype.myApply = function(){
@@ -36,6 +40,8 @@ console.log(Math.max.myApply(null,[1,2,5]))
 ```
 
 ## bind
+
+[MDN文档](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind)
 
 ```javascript
 

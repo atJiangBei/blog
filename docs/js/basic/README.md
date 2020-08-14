@@ -2,7 +2,10 @@
 # typeof和instanceof
 ## typeof
 * 在MDN中译为：[typeof操作符返回一个字符串，表示未经计算的操作数的类型](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof)
-* typeof 一般返回如下几个结果："number"，"string"，"boolean"，"object"，"function" ， "undefined"
+* typeof 一般返回如下几个结果：
+```js
+"number","string","boolean","object","function","undefined"
+```
 假设有一个场景，我们直接判断变量a是否存在，直接的if(a),如果a不存在，此时会抛出错误 a is not defined，因此我们可以使用typeof判断
 
 ```javascript
