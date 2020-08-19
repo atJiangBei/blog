@@ -240,6 +240,63 @@ function checkNaN(val){
 
 ```
 
+## 串行输出问题
+
+**原文称：一道价值25k的蚂蚁金服异步串行面试题**
+
+题目
+```js
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const subFlow = createFlow([() => delay(1000).then(() => log("c"))]);
+
+createFlow([
+  () => log("a"),
+  () => log("b"),
+  subFlow,
+  [() => delay(1000).then(() => log("d")), () => log("e")],
+]).run(() => {
+  console.log("done");
+});
+
+// 需要按照 a,b,延迟1秒,c,延迟1秒,d,e, done 的顺序打印
+
+```
+
+**解（我只放我自己的了，原文的解法我就不放了，我觉得我这个更好(自己的瓜最甜嘛😀)）：**
+```js
+class CreateRecursion{
+	constructor(arr){
+		this.arr = arr;
+	}
+	async run (fn) {
+	  const arr = this.arr;
+	  const loop = async (arr) => {
+		for(let i=0;i<arr.length;i++){
+			if (arr[i] instanceof Function){
+				await arr[i]()
+			}
+			if (arr[i] instanceof Array){
+				await loop(arr[i])
+			}
+			if(arr[i].arr){
+				await loop(arr[i].arr)
+			}
+			
+		}
+	  }
+	  return loop(arr).then(fn)
+	}
+}
+function createFlow (arr) {
+  return new CreateRecursion(arr)
+}
+
+const subFlow = createFlow([() => delay(1000).then(() => log("c")),createFlow([() => delay(1000).then(() => log("f")),createFlow([() => delay(1000).then(() => log("g"))])])])
+const log = console.log
+createFlow([() => log("a"), () => log("b"), subFlow, [() => delay(1000).then(() => log("d")), () => log("e")],]).run(() => { console.log("done") })
+```
+
 ## Ajax
 
 老生常谈，不再说明，下方代码显而易见
@@ -412,13 +469,8 @@ alert();//a
 
 ## e.target和e.currentTarget
 
-**e.target**
-
-发生事件的当前元素
-
-**e.currentTarget**
-
-绑定事件的当前元素
+* **e.target:发生事件的当前元素**  
+* **e.currentTarget:绑定事件的当前元素**
 
 ```html
 
@@ -587,8 +639,6 @@ setTimeout(() => {
 ```
 
 
-## 虚拟dom的优点
-
 ## 事件委托的优缺点
 
 **优点**
@@ -612,6 +662,9 @@ setTimeout(() => {
 * 1.预先把图文等文件资源加载完成，当用户访问时可以直接从内存中取
 
 ## 浏览器的同源策略
+[MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy)
+**同源策略**是一个重要的安全策略，它用于限制一个origin的文档或者它加载的脚本如何能与另一个源的资源进行交互。它能帮助阻隔恶意文档，减少可能被攻击的媒介。
+**同源的定义:** 如果两个 URL 的 协议、端口号 (如果有指定的话)和 域名 都相同的话，则这两个 URL 是同源。
 
 ## 如何解决跨域
 
@@ -622,28 +675,143 @@ setTimeout(() => {
 **具体实现**
 ```js
 //node.js代码
-
+router.get('/responsecrossdomin', async (ctx, next) => {
+	const cbName = ctx.query.callback;
+	ctx.body = cbName+"("+JSON.stringify({title: 'hello word'})+")";
+})
 //前端js代码
-
+var count = 0;
+var cbFix = "cb"; 
+function jsonp(url,fn){
+  const sc = document.createElement("script");
+  const name = cbFix+count;
+  sc.src = url + "?callback="+name;
+  window[name] = function(data){
+    fn(data);
+    sc.parentNode.removeChild(sc);
+    delete window[name];
+  }
+  document.head.insertBefore(sc,document.head.getElementsByTagName("script")[0]);
+  count++;
+}
+jsonp('http://127.0.0.1:3000/responsecrossdomin',function(data){
+  console.log(data)
+})
+jsonp('http://127.0.0.1:3000/responsecrossdomin',function(data){
+  console.log(data)
+})
 
 ```
 
 
-### nginx代理
-
 ### cors
+```js
+//nodejs代码
+const origins = [
+	"http://127.0.0.1:7000"//当前前端origin
+]
+router.get('/signin', async (ctx, next) => {
+	const origin = ctx.header.origin;
+	console.log(origin)
+	if (origins.includes(origin)) {
+		ctx.set('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+		ctx.set("Access-Control-Allow-Origin", origin);//允许跨域
+		ctx.set("Access-Control-Allow-Credentials", true)
+	}
+	ctx.body = {
+		title: 'hello word'
+	}
+})
+//前端代码
+axios.get('http://127.0.0.1:3000/signin').then(function(data){
+  console.log(data)
+})
+```
+
+### nginx代理
+```js
+//nginx配置
+
+http:{
+	server {
+	listen 80;
+	location /IntimateAdmin/ {
+		    proxy_pass   http://127.0.0.1:3000;
+		    index  index.html index.htm;
+		}
+	}
+}
+//前端代码
+
+axios.get('http://127.0.0.1:3000/IntimateAdmin/signin').then(function(data){
+  console.log(data)
+})
+
+```
 
 ## setTimeout误差
 
 ## 闭包
 
 ## 对象的私有属性，如何模拟
+```js
+//a即为该对象的私有属性
+function createObj(){
+	var a = 0;
+	class Parent{
+		constructor(){
+			
+		}
+		setA(val){
+			a = val
+		}
+		getA(){
+			return a;
+		}
+	}
+	return Parent
+}
 
-## 重绘（Repaint）和回流（Reflow）
+const parent1 = new (createObj())();
+parent1.setA(1)
+console.log(parent1.getA());
+const parent2 = new (createObj())();
+console.log(parent2.getA())
+```
 
-## 首屏渲染性能优化
+## setter(obj, 'a.b.c' ,val)
+```js
+const setter = (obj, attributes ,val)=>{
+	attributes =  attributes.split(".");
+	return attributes.reduce((currentObj,key,index)=>{
+		if(index === attributes.length-1){
+			return currentObj[key] = val;
+		}
+		return currentObj[key]
+	},obj)
+}
+```
 
 ## 手写一个继承
+```js
+function Parent(name,age){
+	this.name = name;
+	this.age = age;
+}
+Parent.prototype.sayName = function(){
+	alert(this.name)
+}
+
+//实现一个子类继承父类Parent
+function Child(){
+	//原型继承去继承属性
+	Parent.apply(this,arguments)
+}
+//原型链方式去继承父类的方法
+Object.setPrototypeOf(Child.prototype,Parent.prototype)
+
+
+```
 
 ## let、var、const区别
 
@@ -657,13 +825,83 @@ setTimeout(() => {
 ## html 语义化的理解
 
 ##  [1, 2, 3].map(parseInt) 
+```js
+[1, 2, 3].map(parseInt);// [1, NaN, NaN]
+//解
+[1, 2, 3].map(function(current,index){
+	return parseInt(current,index)
+})
+//即为
+parseInt(1,0);//1
+parseInt(2,1);//NaN
+parseInt(3,2);//NaN
+
+```
+
+**parseInt**
+```js
+//语法
+parseInt(string, radix)
+```
+|  参数   | 描述  |
+|  ----  | ----  |
+| string  | 必需。要被解析的字符串。 |
+| radix  | 可选。表示要解析的数字的基数。该值介于 2 ~ 36 之间。如果省略该参数或其值为 0，则数字将以 10 为基础来解析。如果它以 “0x” 或 “0X” 开头，将以 16 为基数。如果该参数小于 2 或者大于 36，则 parseInt() 将返回 NaN。 |
+
+**因此**
+parseInt(1,0) => parseInt(1,16) => 1  
+parseInt(2,1) => parseInt(2,1) => NaN(无法解释)  
+parseInt(3,2) => parseInt(2,3) => NaN(无法解释)
+
 ##  实现sleep函数
+```js
+//1.await
+
+const sleep = (times=0)=>{
+	return new Promise(resolve=>{
+		setTimeout(resolve,times)
+	})
+}
+
+//2.同步阻塞
+const sleep = (times=0)=>{
+	var  startDate = Date.now();
+	while(true){
+		if(Date.now()-startDate>=times){
+			return;
+		}
+	}
+}
+
+```
+
 ##  defer和async区别
+* 1.当浏览器遇到script标签时，若此时没有defer和async，那么会立即加载并执行
+* 2.当浏览器遇到script标签时，若此时有asunc，浏览器会立即下载脚本，但不影响页面中的其他操作，比如下载其它资源或加载其它脚本，加载和渲染后续文档元素的过程和main.js的加载与执行并行进行（异步）。async并不保证按照脚本出现的顺序先后执行，因此，确保两者之前互不依赖非常重要，指定async属性的目的是不让页面等待两个脚本的下载和执行，从而异步加载页面其他内容，建议异步脚本不要在加载期间修改DOM。异步脚本一定会在页面的load事件前执行，但可能会在DOMContentLoaded事件触发之前或之后执行。  
+* 3.当浏览器遇到script标签时，若此时有defer，表示脚本会被延迟到文档完全解析和显示之后再执行，加载后续文档元素的过程将和main.js并行进行，HTML5规范要求脚本按照出现的顺序先后执行，因此第一个延迟脚本会先于第二个延迟脚本执行，而这两个脚本会先于DOMContentLoaded事件。而在现实生活中，延迟脚本并不会按照顺序执行，也不一定会在DOMContentLoaded事件之前执行，因此最好只包含一个延迟脚本。  
+
+**总结：**
+* 1.两者在下载这一块儿都是异步的相对于html解析  
+* 2.他们的差别在于下载之后何时执行，显然defer更符合我们的要求
+* 3.对于async来说，无论你如何声明它的顺序，它们都是下载完立即执行的。
+
+以上[参考链接](https://www.cnblogs.com/linxuehan/p/4180285.html)
+
 ##  import 和 link 区别
+
+* 1.link引入的css在加载页面时同时加载，而@import中的css要在页面加载完毕后加载  
+* 2.link是HTML提供的标签，@import是css的语法规则，只能加载在style标签内和css文件中，而且必须写在第一行  
+* 3.@import是css2.1时提出的，只能用于IE5+，而link不受兼容影响  
+* 4.link支持js控制DOM改变样式，而@import不支持
+
+##   async、await 的优缺点
+**优点：**
+* 1.异步回调的终结解决方案，大大提高了代码的可维护性
+**缺点**
+* 1.不能当作构造函数使用  
+* 2.编译过后的代码臃肿丑陋
+## 首屏渲染性能优化
 ##  说说你对 BFC 的理解
-##  清除浮动的方法
-##  实现一个私有变量
 ##  Vue 和 React 区别
 ##   Babel 原理
-##   async、await 的优缺点
-##   setter(obj, 'a.b.c' ,val)
+##   虚拟dom的优点

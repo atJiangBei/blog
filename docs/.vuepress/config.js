@@ -109,15 +109,10 @@ module.exports = {
 							
 						]
 					},
-					// {
-					// 	text: '指南',
-					// 	ariaLabel: 'Language Menu',
-					// 	items: [{
-					// 			text: 'Chinese',
-					// 			link: '/guide/'
-					// 		}
-					// 	]
-					// },
+					{
+						text: '个人主页',
+						link: 'https://jiangbei.online'
+					},
 					{
 						text: '更新记录',
 						link: 'https://github.com/atjiangbei/blog/releases'
@@ -142,6 +137,7 @@ module.exports = {
 						children: [
 							'/js/advanced/currying.md',
 							'/js/advanced/eventloop.md',
+							'/js/advanced/ReflowheRepaint.md',
 							'/js/advanced/throttledebonce.md',
 						]
 					},
