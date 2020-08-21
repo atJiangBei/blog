@@ -137,7 +137,6 @@ module.exports = {
 						children: [
 							'/js/advanced/currying.md',
 							'/js/advanced/eventloop.md',
-							'/js/advanced/ReflowheRepaint.md',
 							'/js/advanced/throttledebonce.md',
 						]
 					},

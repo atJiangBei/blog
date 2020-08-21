@@ -4,6 +4,46 @@ sidebar: auto
 
 # vue2.x
 
+## 虚拟dom
+
+**我们拿vue2.x的源码来看一下vue是如何用js对象表示虚拟dom的**
+
+```ts
+
+export default class VNode {
+  constructor (
+    tag?: string,
+    data?: VNodeData,
+    children?: ?Array<VNode>,
+    text?: string,
+    elm?: Node,
+  ) {
+    this.tag = tag
+    this.data = data
+    this.children = children
+    this.text = text
+    this.elm = elm
+    this.key = data && data.key
+  }
+}
+
+```
+
+**以上我们可以看到：虚拟dom就是我们用js对象的方式来表示html dom对象，那么为什么 要使用虚拟dom呢？**
+
+### 为什么要使用虚拟dom
+
+
+也许你现在打开搜索依旧可以看到n多个回答告诉你，操作真实dom的代价如何如何大，为了性能，我们才使用虚拟dom，真的是这样吗？
+这样的解释不能说是错的，但是并不完全正确，毕竟对于框架操作虚拟dom而言、直接原生操作dom来进行针对性的优化方式速度更快，但是如果数据量大到一定程度乃至页面上复杂到一定程度，
+难道你次都要选取对应的dom去更改吗，或者是直接去更改整个innerHTML，当然你也可以特定的去优化代码，但是，难道你要再每个地方都去手动的优化这些吗？这显然是不可能的，
+框架给我们的保证是，在不需要你手动优化的情况下，依旧给你过的去的性能，虚拟dom的真正价值从来都不是性能，1.函数式编程带来的可维护性。2.让js可以渲染到 DOM 以外的地方。
+
+以上[参考链接](https://www.zhihu.com/question/31809713/answer/53544875)
+
+**针对虚拟dom，vue内部具体做了那些优化，请看下文的diff算法篇**
+
+
 ## 如何通过this拿到当前data下面的值
 
 **示例**
@@ -1013,23 +1053,6 @@ To work around it, you can simply give the two outer divs different keys to forc
 
 ## vue2.x之diff算法
 
-
-### 虚拟dom
-
-这不是本章重点
-
-示例：用代码表示一个dom元素
-
-```js
-//下面代码用来表示一个dom
-
-const vnode = {
-		tag:"div",
-		el:null,
-		text:"我是一段文字"
-	}
-
-```
 
 ### 创建虚拟节点，并渲染到我们的页面上
 

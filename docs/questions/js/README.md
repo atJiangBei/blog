@@ -749,9 +749,9 @@ axios.get('http://127.0.0.1:3000/IntimateAdmin/signin').then(function(data){
 
 ```
 
-## setTimeout误差
 
-## 闭包
+
+
 
 ## 对象的私有属性，如何模拟
 ```js
@@ -824,6 +824,20 @@ Object.setPrototypeOf(Child.prototype,Parent.prototype)
 
 ## html 语义化的理解
 
+语义化的意思就是标签本身就包含了一些信息，比如当浏览器遇到h1时就会知道这个标签内部包含了这一块儿最重要的信息，遇到nav就知道这是个导航，遇到header，就知道这是头部等等
+
+#### 为什么要语义化
+
+* 1.代码结构: 使页面没有css的情况下，也能够呈现出很好的内容结构  
+* 2.有利于SEO: 爬虫依赖标签来确定关键字的权重，因此可以和搜索引擎建立良好的沟通，帮助爬虫抓取更多的有效信息  
+* 3.提升用户体验： 例如title、alt可以用于解释名称或者解释图片信息，以及label标签的灵活运用。  
+* 4.便于团队开发和维护: 语义化使得代码更具有可读性，让其他开发人员更加理解你的html结构，减少差异化。  
+* 5.方便其他设备解析: 如屏幕阅读器、盲人阅读器、移动设备等，以有意义的方式来渲染网页。
+
+
+
+
+
 ##  [1, 2, 3].map(parseInt) 
 ```js
 [1, 2, 3].map(parseInt);// [1, NaN, NaN]
@@ -851,7 +865,7 @@ parseInt(string, radix)
 **因此**
 parseInt(1,0) => parseInt(1,16) => 1  
 parseInt(2,1) => parseInt(2,1) => NaN(无法解释)  
-parseInt(3,2) => parseInt(2,3) => NaN(无法解释)
+parseInt(3,2) => parseInt(3,2) => NaN(无法解释)
 
 ##  实现sleep函数
 ```js
@@ -900,8 +914,78 @@ const sleep = (times=0)=>{
 **缺点**
 * 1.不能当作构造函数使用  
 * 2.编译过后的代码臃肿丑陋
+* 3.异常需要try catch捕获
+
+
+## 闭包
+[函数和对其周围状态（lexical environment，词法环境）的引用捆绑在一起构成闭包（closure）。也就是说，闭包可以让你从内部函数访问外部函数作用域。在 JavaScript 中，每当函数被创建，就会在函数生成时生成闭包。](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures)
+
+**优点：避免使用全局变量，防止了全局变量污染。**
+
+**缺点：造成内存泄漏（应用程序没有用到的内存由于某些原因没有被释放）**
+
+**示例1：内部函数可以访问其所在的外部函数内部声明的变量**
+```js
+
+for(var i=0;i<5;i++){
+	setTimeout(()=>{
+		console.log(i)
+	},0)
+}
+//由于输出的时候取到的是全局的变量i，因此此时为5，一共输出五次
+//改成闭包的方式每次创建新的作用域
+for(var i=0;i<5;i++){
+	((i)=>{
+		setTimeout(()=>{
+			console.log(i)
+		},0)
+	})(i)
+}
+
+```
+
+**示例2：创建局部作用域避免变量造成全局污染**
+假如需求如下，有一个输入框，我们需要输入的过程中每隔一秒做一些事情
+
+```js
+//常规做法 ,需要全局变量
+var startDate = 0;
+var nextDate = 0;
+document.querySelector("#text").oninput = function(){
+	if(!startDate){
+		nextDate = startDate = Date.now();
+	}
+	nextDate = Date.now();
+	if(nextDate - startDate >= 1000){
+		console.log(this.value)
+		startDate = nextDate;
+	}
+}
+//使用闭包
+
+	function con(){
+		var startDate = 0;
+		var nextDate = 0;
+		return function(){
+			if(!startDate){
+				nextDate = startDate = Date.now();
+			}
+			nextDate = Date.now();
+			if(nextDate - startDate >= 1000){
+				console.log(this.value)
+				startDate = nextDate;
+			}
+		}
+	}
+	document.querySelector("#text").oninput = con()
+```
+
+
+## setTimeout误差
 ## 首屏渲染性能优化
-##  说说你对 BFC 的理解
-##  Vue 和 React 区别
+##  BFC
 ##   Babel 原理
-##   虚拟dom的优点
+## 虚拟dom的优点
+
+* 1.复用dom元素，提升性能。
+* 2.跨平台
