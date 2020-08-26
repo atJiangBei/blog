@@ -46,7 +46,7 @@ module.exports = {
 				lastUpdated: '上次更新',
 				nav: [
 					{
-						text: 'js',
+						text: '指南',
 						link: '/js/basic/'
 					},
 					{
@@ -137,7 +137,8 @@ module.exports = {
 						children: [
 							'/js/advanced/currying.md',
 							'/js/advanced/eventloop.md',
-							'/js/advanced/throttledebonce.md',
+							'/js/advanced/indexeddb.md',
+							'/js/advanced/webworkers.md'
 						]
 					},
 					{
