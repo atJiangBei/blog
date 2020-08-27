@@ -297,6 +297,56 @@ const log = console.log
 createFlow([() => log("a"), () => log("b"), subFlow, [() => delay(1000).then(() => log("d")), () => log("e")],]).run(() => { console.log("done") })
 ```
 
+## 前端处理并发
+
+题目如下
+
+```js
+const asyncLimit = (arr,max,iteratorFn)=>{
+	//
+})
+//假设最大并发为2，请求函数如下，请编写asyncLimit
+const cs = (count = 0)=>{
+	//createFetch
+	return new Promise(res=>{
+		setTimeout(res,count*1000)
+	})
+}
+asyncLimit([1,2,3,4,5],2,cs).then(data=>{
+		console.log(data)
+	})
+```
+
+解：
+```js
+	const asyncLimit = (arr,max,iteratorFn)=>{
+		let i = 0;
+		const all = [];
+		const queue = [];
+		let start = Date.now();
+		const step = ()=>{
+			if(i === arr.length){
+				return Promise.resolve()
+			}
+			const p = Promise.resolve(iteratorFn(arr[i++]));
+			queue.push(p);
+			all.push(p);
+			p.then(()=>{
+				queue.splice(queue.indexOf(p),1)
+			})
+			
+			if(queue.length<max){
+				return step()
+			}else{
+				return Promise.race(queue).then(step)
+			}
+		}
+		return step().then(()=>{
+			return Promise.all(all);
+		})
+	}
+```
+
 ## Ajax
 
 老生常谈，不再说明，下方代码显而易见
