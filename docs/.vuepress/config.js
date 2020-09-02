@@ -129,6 +129,7 @@ module.exports = {
 							'/js/basic/',
 							'/js/basic/jicheng.md',
 							'/js/basic/prototypeandproto.md',
+							'/js/basic/meta.md',
 						]
 					},
 					{
@@ -148,6 +149,15 @@ module.exports = {
 							'/js/write/array.md',
 							'/js/write/object.md',
 							'/js/write/function.md',
+							'/js/write/eventEmitter.md',
+							'/js/write/promise.md',
+						]
+					},
+					{
+						title: '其它',
+						collapsable: false,
+						children: [
+							'/js/other/tools.md',
 						]
 					},
 				]
