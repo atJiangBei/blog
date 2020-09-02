@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Promise | 江北</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" href="/blog/imgs/logo.png">
+    <link rel="manifest" href="/blog/manifest.json">
+    <link rel="apple-touch-icon" href="/blog/icons/apple-touch-icon-152x152.png">
+    <link rel="mask-icon" href="/blog/icons/safari-pinned-tab.svg" color="#3eaf7c">
+    <meta name="description" content="为中华民族之崛起而努力">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/icons/msapplication-icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    <link rel="preload" href="/blog/assets/css/0.styles.d0858680.css" as="style"><link rel="preload" href="/blog/assets/js/app.71c01b6c.js" as="script"><link rel="preload" href="/blog/assets/js/2.c0191e23.js" as="script"><link rel="preload" href="/blog/assets/js/21.04293f5c.js" as="script"><link rel="preload" href="/blog/assets/js/3.d0de4903.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.769c860c.js"><link rel="prefetch" href="/blog/assets/js/11.cd7e6c2a.js"><link rel="prefetch" href="/blog/assets/js/12.f749abcc.js"><link rel="prefetch" href="/blog/assets/js/13.c253f91b.js"><link rel="prefetch" href="/blog/assets/js/14.79b103e2.js"><link rel="prefetch" href="/blog/assets/js/15.ee52efe2.js"><link rel="prefetch" href="/blog/assets/js/16.072b1975.js"><link rel="prefetch" href="/blog/assets/js/17.3abdce12.js"><link rel="prefetch" href="/blog/assets/js/18.fa0a5edd.js"><link rel="prefetch" href="/blog/assets/js/19.aa388fcf.js"><link rel="prefetch" href="/blog/assets/js/20.8f02659c.js"><link rel="prefetch" href="/blog/assets/js/22.bfa07d9c.js"><link rel="prefetch" href="/blog/assets/js/23.f1dbad04.js"><link rel="prefetch" href="/blog/assets/js/24.73dc77c1.js"><link rel="prefetch" href="/blog/assets/js/25.fcbe3b22.js"><link rel="prefetch" href="/blog/assets/js/26.7ab6cc65.js"><link rel="prefetch" href="/blog/assets/js/27.10aeb5e9.js"><link rel="prefetch" href="/blog/assets/js/28.51925612.js"><link rel="prefetch" href="/blog/assets/js/29.d20fc77f.js"><link rel="prefetch" href="/blog/assets/js/30.b754a29e.js"><link rel="prefetch" href="/blog/assets/js/31.a00248a5.js"><link rel="prefetch" href="/blog/assets/js/32.154f3b00.js"><link rel="prefetch" href="/blog/assets/js/33.243d641d.js"><link rel="prefetch" href="/blog/assets/js/4.858f4870.js"><link rel="prefetch" href="/blog/assets/js/5.23f973fb.js"><link rel="prefetch" href="/blog/assets/js/6.a37f274f.js"><link rel="prefetch" href="/blog/assets/js/7.f00de9bb.js"><link rel="prefetch" href="/blog/assets/js/8.88b80aa7.js"><link rel="prefetch" href="/blog/assets/js/9.a18ffa96.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.d0858680.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><!----> <span class="site-name">江北</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/js/basic/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue List" class="dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/vue/vue2/" class="nav-link">
+  vue2.x
+</a></li><li class="dropdown-item"><!----> <a href="/blog/vue/vue3/" class="nav-link">
+  vue3.x
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/react/" class="nav-link">
+  react
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Js List" class="dropdown-title"><span class="title">面试</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/questions/js/" class="nav-link">
+  原生js
+</a></li><li class="dropdown-item"><!----> <a href="/blog/questions/vue/" class="nav-link">
+  vue
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Language Menu" class="dropdown-title"><span class="title">算法篇</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/leetcode/array/" class="nav-link">
+  数组
+</a></li><li class="dropdown-item"><!----> <a href="/blog/leetcode/string/" class="nav-link">
+  字符串
+</a></li><li class="dropdown-item"><!----> <a href="/blog/leetcode/list/" class="nav-link">
+  链表
+</a></li><li class="dropdown-item"><!----> <a href="/blog/leetcode/tree/" class="nav-link">
+  树
+</a></li><li class="dropdown-item"><!----> <a href="/blog/leetcode/other/" class="nav-link">
+  其它
+</a></li></ul></div></div><div class="nav-item"><a href="https://jiangbei.online" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  个人主页
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/atjiangbei/blog/releases" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  更新记录
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/js/write/promise.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/blog/en.html" class="nav-link">
+  en-US
+</a></li></ul></div></div> <a href="https://github.com/atJiangBei/blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/js/basic/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue List" class="dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/vue/vue2/" class="nav-link">
+  vue2.x
+</a></li><li class="dropdown-item"><!----> <a href="/blog/vue/vue3/" class="nav-link">
+  vue3.x
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/react/" class="nav-link">
+  react
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Js List" class="dropdown-title"><span class="title">面试</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/questions/js/" class="nav-link">
+  原生js
+</a></li><li class="dropdown-item"><!----> <a href="/blog/questions/vue/" class="nav-link">
+  vue
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Language Menu" class="dropdown-title"><span class="title">算法篇</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/leetcode/array/" class="nav-link">
+  数组
+</a></li><li class="dropdown-item"><!----> <a href="/blog/leetcode/string/" class="nav-link">
+  字符串
+</a></li><li class="dropdown-item"><!----> <a href="/blog/leetcode/list/" class="nav-link">
+  链表
+</a></li><li class="dropdown-item"><!----> <a href="/blog/leetcode/tree/" class="nav-link">
+  树
+</a></li><li class="dropdown-item"><!----> <a href="/blog/leetcode/other/" class="nav-link">
+  其它
+</a></li></ul></div></div><div class="nav-item"><a href="https://jiangbei.online" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  个人主页
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/atjiangbei/blog/releases" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  更新记录
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/js/write/promise.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/blog/en.html" class="nav-link">
+  en-US
+</a></li></ul></div></div> <a href="https://github.com/atJiangBei/blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><a href="/blog/" aria-current="page" class="sidebar-link">Home</a></li><li><a href="/blog/message.html" class="sidebar-link">序言</a></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>基础篇</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/js/basic/" class="sidebar-link">typeof和instanceof</a></li><li><a href="/blog/js/basic/jicheng.html" class="sidebar-link">js的继承</a></li><li><a href="/blog/js/basic/prototypeandproto.html" class="sidebar-link">原型和原型链</a></li><li><a href="/blog/js/basic/meta.html" class="sidebar-link">meta</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>进阶</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/js/advanced/currying.html" class="sidebar-link">柯里化</a></li><li><a href="/blog/js/advanced/eventloop.html" class="sidebar-link">事件循环</a></li><li><a href="/blog/js/advanced/indexeddb.html" class="sidebar-link">IndexedDB</a></li><li><a href="/blog/js/advanced/webworkers.html" class="sidebar-link">WebWorker</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>手写篇</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/js/write/array.html" class="sidebar-link">数组</a></li><li><a href="/blog/js/write/object.html" class="sidebar-link">对象</a></li><li><a href="/blog/js/write/function.html" class="sidebar-link">函数</a></li><li><a href="/blog/js/write/eventEmitter.html" class="sidebar-link">EventEmitter</a></li><li><a href="/blog/js/write/promise.html" aria-current="page" class="active sidebar-link">Promise</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/js/write/promise.html#手写promisea" class="sidebar-link">手写PromiseA+</a></li></ul></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>其它</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/js/other/tools.html" class="sidebar-link">网站指南</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="promise"><a href="#promise" class="header-anchor">#</a> Promise</h1> <h2 id="手写promisea"><a href="#手写promisea" class="header-anchor">#</a> 手写PromiseA+</h2> <p><strong>我表示，看看就好了，😄</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//promise.js</span>
+
+<span class="token keyword">const</span> <span class="token constant">PENDING</span> <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'PENDING'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token constant">RESOLVED</span> <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'RESOLVED'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token constant">REJECTED</span> <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'REJECTED'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">resolvePromise</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">promise2<span class="token punctuation">,</span> x<span class="token punctuation">,</span> resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>promise2 <span class="token operator">===</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token function">reject</span><span class="token punctuation">(</span>
+			<span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'Chaining cycle detected for promise #&lt;promise&gt;'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> x <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">&amp;&amp;</span> x <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token keyword">typeof</span> x <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">//防止多次调用成功或者失败</span>
+		<span class="token keyword">let</span> called<span class="token punctuation">;</span> <span class="token comment">// 内部测试的时候,会成功和失败都调用</span>
+		<span class="token keyword">try</span> <span class="token punctuation">{</span> <span class="token comment">//预防取.then的时候错误</span>
+			<span class="token keyword">let</span> then <span class="token operator">=</span> x<span class="token punctuation">.</span>then<span class="token punctuation">;</span> <span class="token comment">//Object.definePropertype</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> then <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token comment">//没有  x.then,因为怕再次取.then的时候出错</span>
+				<span class="token function">then</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token parameter">y</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token comment">//y的结果可能还是一个promise,递归调用,直到结果是一个普通值</span>
+					<span class="token comment">//resolve(y);//采用promise的成功结果向下传递</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span>called<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token keyword">return</span>
+					<span class="token punctuation">}</span>
+					called <span class="token operator">=</span> <span class="token boolean">true</span>
+					<span class="token function">resolvePromise</span><span class="token punctuation">(</span>promise2<span class="token punctuation">,</span> y<span class="token punctuation">,</span> resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span>
+				<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token parameter">r</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+					<span class="token comment">//r不再判断是否是promise,因为报错,直接传递</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span>called<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token keyword">return</span>
+					<span class="token punctuation">}</span>
+					called <span class="token operator">=</span> <span class="token boolean">true</span>
+					<span class="token function">reject</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//失败结果向下传递</span>
+				<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+				<span class="token comment">//代表向下传递的返回值是一个普通对象</span>
+				<span class="token function">resolve</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>called<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">return</span>
+			<span class="token punctuation">}</span>
+			called <span class="token operator">=</span> <span class="token boolean">true</span>
+			<span class="token function">reject</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+		<span class="token punctuation">}</span>
+
+	<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+		<span class="token function">resolve</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">Promise</span> <span class="token punctuation">{</span>
+	<span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">executor</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> <span class="token constant">PENDING</span><span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>onResolvedCallbacks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>onRejectedCallbacks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>reason <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+		<span class="token keyword">let</span> <span class="token function-variable function">resolve</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token constant">PENDING</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> value
+				<span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> <span class="token constant">RESOLVED</span>
+				<span class="token keyword">this</span><span class="token punctuation">.</span>onResolvedCallbacks<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">fn</span> <span class="token operator">=&gt;</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">let</span> <span class="token function-variable function">reject</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">reason</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token constant">PENDING</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">this</span><span class="token punctuation">.</span>reason <span class="token operator">=</span> reason
+				<span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> <span class="token constant">REJECTED</span>
+				<span class="token keyword">this</span><span class="token punctuation">.</span>onRejectedCallbacks<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">fn</span> <span class="token operator">=&gt;</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">try</span> <span class="token punctuation">{</span>
+			<span class="token function">executor</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span>
+		<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token function">reject</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	<span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">onfulfilled<span class="token punctuation">,</span> onrejected</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">//onfulfilled, onrejected 都是可选参数</span>
+		onfulfilled <span class="token operator">=</span> <span class="token keyword">typeof</span> onfulfilled <span class="token operator">===</span> <span class="token string">'function'</span> <span class="token operator">?</span> <span class="token function-variable function">onfulfilled</span> <span class="token operator">:</span> <span class="token parameter">data</span> <span class="token operator">=&gt;</span> data<span class="token punctuation">;</span>
+
+		onrejected <span class="token operator">=</span> <span class="token keyword">typeof</span> onrejected <span class="token operator">===</span> <span class="token string">'function'</span> <span class="token operator">?</span> <span class="token function-variable function">onrejected</span> <span class="token operator">:</span> <span class="token parameter">err</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+			<span class="token keyword">throw</span> err<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">let</span> promise2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token constant">RESOLVED</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+					<span class="token keyword">try</span> <span class="token punctuation">{</span>
+						<span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token function">onfulfilled</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+						<span class="token function">resolvePromise</span><span class="token punctuation">(</span>promise2<span class="token punctuation">,</span> x<span class="token punctuation">,</span> resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span>
+					<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token function">reject</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+					<span class="token punctuation">}</span>
+				<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+
+				<span class="token keyword">return</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token constant">REJECTED</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+					<span class="token keyword">try</span> <span class="token punctuation">{</span>
+						<span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token function">onrejected</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>reason<span class="token punctuation">)</span>
+						<span class="token function">resolvePromise</span><span class="token punctuation">(</span>promise2<span class="token punctuation">,</span> x<span class="token punctuation">,</span> resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span>
+					<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token function">reject</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+					<span class="token punctuation">}</span>
+				<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token constant">PENDING</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">this</span><span class="token punctuation">.</span>onResolvedCallbacks<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+					<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+						<span class="token keyword">try</span> <span class="token punctuation">{</span>
+							<span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token function">onfulfilled</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+							<span class="token function">resolvePromise</span><span class="token punctuation">(</span>promise2<span class="token punctuation">,</span> x<span class="token punctuation">,</span> resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span>
+						<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+							<span class="token function">reject</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+						<span class="token punctuation">}</span>
+
+					<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+				<span class="token punctuation">}</span><span class="token punctuation">)</span>
+				<span class="token keyword">this</span><span class="token punctuation">.</span>onRejectedCallbacks<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+					<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+						<span class="token keyword">try</span> <span class="token punctuation">{</span>
+							<span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token function">onrejected</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>reason<span class="token punctuation">)</span>
+							<span class="token function">resolvePromise</span><span class="token punctuation">(</span>promise2<span class="token punctuation">,</span> x<span class="token punctuation">,</span> resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span>
+						<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+							<span class="token function">reject</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+						<span class="token punctuation">}</span>
+					<span class="token punctuation">}</span><span class="token punctuation">)</span>
+				<span class="token punctuation">}</span><span class="token punctuation">)</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span><span class="token punctuation">)</span>
+		<span class="token keyword">return</span> promise2
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+Promise<span class="token punctuation">.</span>defer <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function-variable function">deferred</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">let</span> dfd <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+	dfd<span class="token punctuation">.</span>promise <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+		dfd<span class="token punctuation">.</span>resolve <span class="token operator">=</span> resolve
+		dfd<span class="token punctuation">.</span>reject <span class="token operator">=</span> reject
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+	<span class="token keyword">return</span> dfd
+<span class="token punctuation">}</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> Promise
+
+<span class="token comment">//test</span>
+<span class="token comment">//测试库</span>
+<span class="token comment">//promises-aplus-tests promise.js</span>
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/atJiangBei/blog/edit/master/docs/js/write/promise.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2020-9-2 18:12:37</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/js/write/eventEmitter.html" class="prev">
+        EventEmitter
+      </a></span> <span class="next"><a href="/blog/js/other/tools.html">
+        网站指南
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/blog/assets/js/app.71c01b6c.js" defer></script><script src="/blog/assets/js/2.c0191e23.js" defer></script><script src="/blog/assets/js/21.04293f5c.js" defer></script><script src="/blog/assets/js/3.d0de4903.js" defer></script>
+  </body>
+</html>
