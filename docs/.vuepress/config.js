@@ -130,6 +130,7 @@ module.exports = {
 							'/js/basic/jicheng.md',
 							'/js/basic/prototypeandproto.md',
 							'/js/basic/meta.md',
+							'/js/basic/copy.md',
 						]
 					},
 					{

@@ -18,6 +18,12 @@ if(a == 1;a == 2;a == 3){
 
 ```
 
+**JavaScript中对象到字符串经历了如下这些步骤**
+
+* 如果对象具有toString()方法，则调用这个方法。如果它返回一个原始值，JavaScript将这个值转换为字符串（如果本身不是字符串的话），并返回这个字符串结果。
+* 如果对象没有toString()方法，或者这个方法并不返回一个原始值，那么JavaScript会调用valueOf()方法。如果存在这个方法，则JavaScript调用它。如果返回值是原始值，JavaScript将这个值转化为字符串（如果本身不是字符串的话），并返回这个字符串结果。
+* 否则JavaScript无法从toString()或valueOf()获得一个原始值。因此，这时它将抛出一个类型错误异常。
+
 **答：**
 
 ```javascript
@@ -345,6 +351,116 @@ asyncLimit([1,2,3,4,5],2,cs).then(data=>{
 			return Promise.all(all);
 		})
 	}
+```
+
+## 对象解析
+
+例：
+```javascript
+const oldObj = {
+	a:{
+		b:1
+	},
+	c:2
+}
+function parsingObjects(obj){
+	
+}
+const newObj = parsingObjects(oldObj);
+//newObj=>   {"a.b":1,c:2}
+const oldObj2 = {
+	a:{
+		b:1
+	},
+	c:[
+		1,2,{d:3,e:4}
+	]
+}
+const newObj2 = parsingObjects(oldObj2);
+/*newObj2=>   
+{
+	'a.b': 1
+	'c[0]': 1
+	'c[1]': 2
+	'c[2]'.d: 3
+	'c[2]'.e: 4
+}
+*/
+```
+
+**答：**
+
+```javascript
+const isArray = (arr) => {
+	return Array.isArray(arr)
+}
+const isObj = (obj) => {
+	return Object.prototype.toString.call(obj) === "[object Object]";
+}
+const parsingObjects = (obj) => {
+		var nbj = {};
+		const setVal = (str, it) => {
+			if (typeof(it) !== 'object') {
+				nbj[str] = it;
+			} else {
+				fn(str, it)
+			}
+		}
+		const forArray = (key,arr)=>{
+			arr.forEach((it, index) => {
+				var str = key ? key + ('[' + index+']') : '['+index+']';
+				setVal(str, it)
+			})
+		}
+		const forObj = (key,obj)=>{
+			for(let i in obj){
+				const str = key?key+'.'+i:i
+				setVal(str,obj[i])
+			}
+		}
+		const fn = (key = '', item) => {
+			if(isObj(item)){
+				forObj(key, item)
+			}
+			if (isArray(item)) {
+				forArray(key,item)
+			}
+		}
+		fn('', obj)
+		return nbj;
+	}
+var obj = {
+	a: {
+		b: {
+			c: {
+				d: 1,
+				h:2
+			}
+		}
+	},
+	hehe: {
+		a: [1, 2],
+		e: {
+			a: 2,
+			f:[1,2,3,{g:4}]
+		},
+	}
+}
+/* 
+转换后
+{
+	a.b.c.d: 1
+	a.b.c.h: 2
+	hehe.a[0]: 1
+	hehe.a[1]: 2
+	hehe.e.a: 2
+	hehe.e.f[0]: 1
+	hehe.e.f[1]: 2
+	hehe.e.f[2]: 3
+	hehe.e.f[3].g: 4
+}
+ 
+ */
 ```
 
 ## Ajax
