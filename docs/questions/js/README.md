@@ -325,33 +325,88 @@ asyncLimit([1,2,3,4,5],2,cs).then(data=>{
 
 解：
 ```js
-	const asyncLimit = (arr,max,iteratorFn)=>{
-		let i = 0;
-		const all = [];
-		const queue = [];
-		let start = Date.now();
-		const step = ()=>{
-			if(i === arr.length){
-				return Promise.resolve()
-			}
-			const p = Promise.resolve(iteratorFn(arr[i++]));
-			queue.push(p);
-			all.push(p);
-			p.then(()=>{
-				queue.splice(queue.indexOf(p),1)
-			})
-			
-			if(queue.length<max){
-				return step()
-			}else{
-				return Promise.race(queue).then(step)
-			}
+const asyncLimit = (arr,max,iteratorFn)=>{
+	let i = 0;
+	const all = [];
+	const queue = [];
+	let start = Date.now();
+	const step = ()=>{
+		if(i === arr.length){
+			return Promise.resolve()
 		}
-		return step().then(()=>{
-			return Promise.all(all);
+		const p = Promise.resolve(iteratorFn(arr[i++]));
+		queue.push(p);
+		all.push(p);
+		p.then(()=>{
+			queue.splice(queue.indexOf(p),1)
 		})
+		
+		if(queue.length<max){
+			return step()
+		}else{
+			return Promise.race(queue).then(step)
+		}
 	}
+	return step().then(()=>{
+		return Promise.all(all);
+	})
+}
 ```
+
+**(2)**
+
+```javascript
+//JS实现一个带并发限制的异步调度器Scheduler,
+//保证同时运行的任务最多有两个。
+//完善代码中Scheduler类,使得以下程序能正确输出：
+//Scheduler内部可以写其他的方法
+
+class Scheduler {
+	constructor(){
+		this.list = [];
+		this.arr = [];
+	}
+  async add(promiseCreator,time) { 
+	if(this.list.length>1){
+		await new Promise(resolve=>this.arr.push(resolve));
+	}
+	const pro = promiseCreator().then(()=>{
+		this.list.splice(this.list.indexOf(pro),1);
+		if(this.arr.length){
+			this.arr.shift()()
+		}
+	})
+	this.list.push(pro)
+	return pro;
+ }
+
+  // ...
+}
+
+const timeout = (time) => new Promise(resolve => {
+  setTimeout(resolve, time)
+})
+
+const scheduler = new Scheduler()
+const addTask = (time, order) => {
+  scheduler.add(() => timeout(time),time)
+    .then(() => console.log(order))
+}
+// addTask(1000, '1')
+// addTask(500, '2')
+// addTask(300, '3')
+// addTask(400, '4')
+// output: 2 3 1 4
+
+// 一开始,1、2两个任务进入队列
+// 500ms时,2完成,输出2,任务3进队
+// 800ms时,3完成,输出3,任务4进队
+// 1000ms时,1完成,输出1
+// 1200ms时,4完成,输出4
+
+```
+
+
 
 ## 对象解析
 
