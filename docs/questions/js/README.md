@@ -518,6 +518,44 @@ var obj = {
  */
 ```
 
+## Generator输出问题
+
+使用Generator函数依次输出多维数组内的数据
+
+```javascript
+
+const arr = [0,[1,2,[3,4],5],6];
+//0,1,2,3,4,5,6
+const forFn = function *(arr){
+	for(let i=0;i<arr.length;i++){
+		if(Array.isArray(arr[i])){
+			yield forFn(arr[i])
+		}else{
+			yield arr[i]
+		}
+	}
+}
+const co = (results)=>{
+	var result = results.next();
+	var done = result.done;
+	var value = result.value;
+	while(!done){
+		if({}.toString.call(value) === '[object Generator]'){
+			co(value)
+		}else{
+			console.log(value)
+		}
+		result = results.next();
+		done = result.done;
+		value = result.value;
+	}
+}
+co(forFn(arr))
+
+```
+
+
+
 ## Ajax
 
 老生常谈，不再说明，下方代码显而易见
