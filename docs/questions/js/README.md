@@ -90,6 +90,137 @@ if(a == 1 && a == 2 && a == 3){
 
 ```
 
+## 数据处理问题
+
+```javascript
+const data = [
+	  {
+	    id: 1,
+	    label: '1',
+	    children: [
+	      {
+	        id: 2,
+	        label: '2',
+	        children: [
+	          { id: 4, label: '4'},
+	          { id: 5, label: '5' }
+	        ]
+	      },
+	      {
+	        id: 3,
+	        label: '3',
+	        children: [
+	          { id: 6, label: '6' },
+	          { id: 7, label: '7' }
+	        ]
+	      }
+	    ]
+	  },
+	  {
+	    id: 11,
+	    label: '11',
+	    children: [
+	      {
+	        id: 21,
+	        label: '21',
+	        children: [
+	          { id: 41, label: '41' },
+	          { id: 51, label: '51' }
+	        ]
+	      },
+	      {
+	        id: 31,
+	        label: '31',
+	        children: [
+	          { id: 61, label: '61' },
+	          { id: 71, label: '71' }
+	        ]
+	      }
+	    ]
+	  }
+	]
+//把上面数据处理为
+//
+//[
+//	{
+//		ids:[1,2,4],
+//		labels:['1','2','4']
+//	},
+//	{
+//		ids:[1,2,5],
+//		labels:['1','2','5']
+//	},
+//	{
+//		ids:[1,3,6],
+//		labels:['1','3','6']
+//	},
+//	{
+//		ids:[1,3,7],
+//		labels:['1','3','7']
+//	},
+//	.....
+//	....格式如上
+//]
+//
+
+//方法一，创建新数组，从上到下合并，并把新值从上到下合并
+
+const transform = (arr) => {
+	  const newArr = [];
+	  const cb = (obj, ids = [], labels = []) => {
+	    if (obj.children) {
+	      const children = obj.children;
+	      for (let i = 0; i < children.length; i++) {
+	        const child = children[i];
+	        cb(child, [...ids, obj.id], [...labels, obj.label]);
+	      }
+	    } else {
+	      newArr.push({
+	        ids: [...ids, obj.id],
+	        labels: [...labels, obj.label],
+	      });
+	    }
+	  };
+		for(let i=0;i<arr.length;i++){
+			const obj = arr[i];
+			cb(obj);
+		}
+	  return newArr;
+	};
+	console.log(transform(data));
+
+//方法二，把父数据依次向子数据内部合并
+const transform = (arr)=>{
+		//深拷贝原数据避免改变原数据
+		arr = JSON.parse(JSON.stringify(arr))
+		let newArr = []
+		const cb = (obj)=>{
+			const children = obj.children;
+			if(children){
+				for(let i=0;i<children.length;i++){
+					const child = children[i];
+					let ids = Array.isArray(obj.id)?obj.id:[obj.id];
+					let labels = Array.isArray(obj.label)?obj.label:[obj.label];
+					ids = ids.concat(child.id)
+					labels = labels.concat(child.label)
+					child.id = ids
+					child.label = labels
+					cb(child)
+				}
+			}else{
+				newArr.push(obj)
+			}
+		}
+		for(let i=0;i<arr.length;i++){
+			const obj = arr[i];
+			cb(obj)
+		}
+		return newArr
+	}
+
+
+```
+
 
 ## 经典去重
 
@@ -551,6 +682,24 @@ const co = (results)=>{
 	}
 }
 co(forFn(arr))
+//方法二https://es6.ruanyifeng.com/#docs/generator
+var arr = [1, [[2, 3], 4], [5, 6]];
+	
+var flat = function* (a) {
+  var length = a.length;
+  for (var i = 0; i < length; i++) {
+	var item = a[i];
+	if (typeof item !== 'number') {
+	  yield* flat(item);
+	} else {
+	  yield item;
+	}
+  }
+};
+
+for (var f of flat(arr)) {
+  console.log(f);
+}
 
 ```
 
