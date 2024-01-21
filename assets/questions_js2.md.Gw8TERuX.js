@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as s}from"./chunks/framework.s23_UjMq.js";const l=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"questions/js2.md","filePath":"questions/js2.md","lastUpdated":null}'),a={name:"questions/js2.md"};function o(n,r,c,i,d,p){return s(),t("div")}const m=e(a,[["render",o]]);export{l as __pageData,m as default};
