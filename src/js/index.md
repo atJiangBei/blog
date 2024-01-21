@@ -648,8 +648,6 @@ function deletefn(db) {
 - 4.我们也可以拿到某条数据的 id，去删除它
 - 5.刷新页面，我们可以查询到所有的数据
 
-**千般解说不如你试一试，感兴趣的可以复制上面的例子试一试**
-
 ### 本文最后具体实用
 
 **遇到的问题，高德地图中查询全国市级的经纬度并渲染，以我的电脑运行速度大概 20 秒以上才查询完，可以看到浏览器上面一直在转圈。而且由于数据大概有 50M，所以 indexedDB 的方案是最好的。感兴趣的可以复制下面的例子**
@@ -1294,14 +1292,13 @@ Javascript 有六种数据类型
 ### 浅拷贝
 
 ```javascript
-const obj1 = { name: '小明' };
+const obj1 = { name: '小明', details: { count: 1 } };
 
-const obj2 = obj1;
+const obj2 = Object.assign({}, obj1);
 
-obj2.name = '大明';
+obj2.details.count++;
 
-console.log(obj1.name);
-//大明
+console.log(obj1.details.count); //2
 ```
 
 **以上：**由于对象是引用类型，obj1 和 obj2 指向的是同一个 引用地址
@@ -1309,19 +1306,17 @@ console.log(obj1.name);
 ### 深拷贝
 
 ```javascript
-function copyDeep(obj) {
-  if (!obj) return obj;
-  if (typeof obj !== 'object') return obj;
-  const newObj = {};
-  for (let k in obj) {
-    if (typeof obj[k] === 'object') {
-      newObj[k] = copyDeep(obj[k]);
-    } else {
-      newObj[k] = obj[k];
-    }
+const deepCopy = (obj) => {
+  if (!obj || typeof obj !== 'object') {
+    return obj;
   }
+
+  const newObj = Array.isArray(obj) ? [] : {};
+  Object.keys(obj).forEach((k) => {
+    newObj[k] = deepCopy(obj[k]);
+  });
   return newObj;
-}
+};
 
 const obj1 = {
   name: '老明',
@@ -1341,43 +1336,20 @@ console.log(obj1.next === obj2.next); //false
 ### 循环引用的深拷贝
 
 ```javascript
-function typeofSelf(obj) {
-  return {}.toString.call(obj);
-}
-
-function copyDeep(obj) {
-  const weakMap = new WeakMap();
-  function copyObj(obj) {
-    if (weakMap.get(obj)) {
-      return weakMap.get(obj);
-    }
-    let result = {};
-
-    if (typeofSelf(obj) === '[object Object]') {
-      weakMap.set(obj, result);
-      Object.keys(obj).forEach((key) => {
-        if (typeof obj[key] === 'object') {
-          result[key] = copyObj(obj[key]);
-        } else {
-          result[key] = obj[key];
-        }
-      });
-    } else if (typeofSelf(obj) === '[object Array]') {
-      result = [];
-      weakMap.set(obj, result);
-      obj.forEach((item, index) => {
-        if (typeof item === 'object') {
-          result[index] = copyObj(item);
-        } else {
-          result[index] = item;
-        }
-      });
-    }
-
-    return result;
+const deepCopy = (obj, map = new WeakMap()) => {
+  if (!obj || typeof obj !== 'object') {
+    return obj;
   }
-  return copyObj(obj);
-}
+  if (map.has(obj)) {
+    return map.get(obj);
+  }
+  const newObj = Array.isArray(obj) ? [] : {};
+  map.set(obj, newObj);
+  Object.keys(obj).forEach((k) => {
+    newObj[k] = deepCopy(obj[k], map);
+  });
+  return newObj;
+};
 const obj2 = {
   a: {
     name: 'a',
@@ -1391,7 +1363,7 @@ const obj2 = {
 };
 obj2.c.e.push(obj2);
 
-console.log(copyDeep(obj2));
+console.log(deepCopy(obj2));
 ```
 
 ## 原型和原型链

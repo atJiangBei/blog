@@ -19,7 +19,9 @@ hero:
 
 features:
   - title: JavaScript
-    details: 具有函数优先的轻量级，解释型或即时编译型的编程语言。t基于原型编程、多范式的动态脚本语言，支持面向对象、命令式、声明式、函数式编程范式
+    details: 具有函数优先的轻量级，解释型或即时编译型的编程语言。t基于原型编程、多范式的动态脚本语言，支持面向对象、命令式、声明式、函数式编程范式.
+  - title: TypeScript
+    details: TypeScript 是一种基于 JavaScript 构建的强类型编程语言，可在任何规模下为您提供更好的工具。
   - title: Vue
     details: 基于标准 HTML、CSS 和 JavaScript 构建，并提供了一套声明式的、组件化的编程模型，帮助你高效地开发用户界面。
   - title: React
