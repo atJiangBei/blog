@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as a}from"./chunks/framework.s23_UjMq.js";const l=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"other/git.md","filePath":"other/git.md","lastUpdated":null}'),r={name:"other/git.md"};function o(s,n,c,i,d,p){return a(),e("div")}const m=t(r,[["render",o]]);export{l as __pageData,m as default};
