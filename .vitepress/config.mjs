@@ -53,11 +53,11 @@ export default defineConfig({
   srcDir: 'src',
   base: '/blog/',
   lastUpdated: true,
-  search: {
-    provider: 'local',
-  },
   themeConfig: {
     logo: '/logo.svg',
+    search: {
+      provider: 'local',
+    },
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
