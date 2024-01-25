@@ -1,3 +1,40 @@
+## css 画对角线
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+      .triangle {
+        border: 1px solid #333;
+        width: 300px;
+        height: 150px;
+        background: linear-gradient(
+            to top right,
+            rgba(0, 0, 0, 0.1) 0%,
+            rgba(0, 0, 0, 0.1) calc(50% - 1px),
+            rgba(0, 0, 0, 0.8) 50%,
+            rgba(0, 0, 0, 0.1) calc(50% + 1px),
+            rgba(0, 0, 0, 0.1) 100%
+          ), linear-gradient(to bottom right, rgba(0, 0, 0, 0.1) 0%, rgba(
+                0,
+                0,
+                0,
+                0.1
+              ) calc(50% - 1px), rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0.1) calc(
+                50% + 1px
+              ), rgba(0, 0, 0, 0.1) 100%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="triangle"></div>
+  </body>
+</html>
+```
+
 ## BFC
 
 先来看两个相关的概念：
